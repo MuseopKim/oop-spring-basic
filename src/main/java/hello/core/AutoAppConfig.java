@@ -2,6 +2,7 @@ package hello.core;
 
 import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepository;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +15,7 @@ import org.springframework.context.annotation.FilterType;
 public class AutoAppConfig {
 
     @Bean(name = "memoryMemberRepository")
+    @ConditionalOnMissingBean
     public MemberRepository memberRepository() {
         return new MemoryMemberRepository();
     }
